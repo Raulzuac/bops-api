@@ -4,6 +4,7 @@ import { databaseProviders } from './core/config/orm.config';
 import { BopsModule } from './bops/bops.module';
 import { Bop } from './bops/infraestructure/database/bop.entity';
 import { Pages } from './bops/infraestructure/database/pages.entify';
+import { ConfigModule } from '@nestjs/config';
 
 const Entities = [
   Bop,
@@ -11,14 +12,16 @@ const Entities = [
 ]
 
 @Module({
-  imports: [BopsModule,
+  imports: [
+    ConfigModule.forRoot(),
+    BopsModule,
     TypeOrmModule.forRoot({
       type: 'mariadb',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'bops',
+      host: process.env.DB_IP,
+      port: Number(process.env.DB_PORT),
+      username: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DATABASE,
       entities: Entities
     })
   ],

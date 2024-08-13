@@ -12,6 +12,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const bops_module_1 = require("./bops/bops.module");
 const bop_entity_1 = require("./bops/infraestructure/database/bop.entity");
 const pages_entify_1 = require("./bops/infraestructure/database/pages.entify");
+const config_1 = require("@nestjs/config");
 const Entities = [
     bop_entity_1.Bop,
     pages_entify_1.Pages
@@ -21,14 +22,16 @@ let AppModule = class AppModule {
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [bops_module_1.BopsModule,
+        imports: [
+            config_1.ConfigModule.forRoot(),
+            bops_module_1.BopsModule,
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'mariadb',
-                host: 'localhost',
-                port: 3306,
-                username: 'root',
-                password: 'root',
-                database: 'bops',
+                host: process.env.DB_IP,
+                port: Number(process.env.DB_PORT),
+                username: process.env.DB_USER,
+                password: process.env.DB_PASS,
+                database: process.env.DATABASE,
                 entities: Entities
             })
         ],
