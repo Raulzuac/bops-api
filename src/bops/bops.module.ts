@@ -14,11 +14,15 @@ import { GetPdfService } from './application/get_pdf.service';
 import { GetPdfQuery } from './domain/query/get_pdf.query';
 import { GetBopPdfController } from './infraestructure/controller/get_bop_pdf.controller';
 import { GetBopPdfDataController } from './infraestructure/controller/get_pdf_data.controller';
+import { GetBopsByQueryController } from './infraestructure/controller/get_bop_query.controler';
+import { GetBopsSearchService } from './application/get_bop_search.service';
+import { GetBopsSearchQuery } from './domain/query/get_bops_search.query';
 
 const Services = [
     GetDeporBopsService,
     GetBopsQueryService,
-    GetPdfService
+    GetPdfService,
+    GetBopsSearchService
 ]
 
 const Query = [
@@ -26,13 +30,15 @@ const Query = [
     GetDeporBopsQuery,
     GetBopByContentController,
     GetPdfQuery,
+    GetBopsSearchQuery
 ]
 
 const Controller = [
     GetDeporBopsController,
     GetBopByContentController,
     GetBopPdfController,
-    GetBopPdfDataController
+    GetBopPdfDataController,
+    GetBopsByQueryController
 ]
 
 @Module({

@@ -12,32 +12,27 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetBopPdfController = void 0;
+exports.GetBopsByQueryController = void 0;
 const common_1 = require("@nestjs/common");
-const get_pdf_service_1 = require("../../application/get_pdf.service");
-let GetBopPdfController = class GetBopPdfController {
-    constructor(getPdfService) {
-        this.getPdfService = getPdfService;
+const get_bop_search_service_1 = require("../../application/get_bop_search.service");
+let GetBopsByQueryController = class GetBopsByQueryController {
+    constructor(getBopSearchService) {
+        this.getBopSearchService = getBopSearchService;
     }
-    async getBopPdf(id, res) {
-        console.log(id);
-        const pdf = await this.getPdfService.execute(id);
-        res.setHeader('Content-Type', 'application/pdf');
-        res.setHeader('Content-Disposition', `attachment; filename="${pdf.place}-${pdf.date}.pdf"`);
-        res.send(pdf.file);
+    getBopsByQuery(body) {
+        return this.getBopSearchService.execute(body);
     }
 };
-exports.GetBopPdfController = GetBopPdfController;
+exports.GetBopsByQueryController = GetBopsByQueryController;
 __decorate([
-    (0, common_1.Get)('downloadpdf/:id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Res)()),
+    (0, common_1.Post)('search'),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", Promise)
-], GetBopPdfController.prototype, "getBopPdf", null);
-exports.GetBopPdfController = GetBopPdfController = __decorate([
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], GetBopsByQueryController.prototype, "getBopsByQuery", null);
+exports.GetBopsByQueryController = GetBopsByQueryController = __decorate([
     (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [get_pdf_service_1.GetPdfService])
-], GetBopPdfController);
-//# sourceMappingURL=get_bop_pdf.controller.js.map
+    __metadata("design:paramtypes", [get_bop_search_service_1.GetBopsSearchService])
+], GetBopsByQueryController);
+//# sourceMappingURL=get_bop_query.controler.js.map

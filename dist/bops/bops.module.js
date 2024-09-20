@@ -21,22 +21,28 @@ const get_pdf_service_1 = require("./application/get_pdf.service");
 const get_pdf_query_1 = require("./domain/query/get_pdf.query");
 const get_bop_pdf_controller_1 = require("./infraestructure/controller/get_bop_pdf.controller");
 const get_pdf_data_controller_1 = require("./infraestructure/controller/get_pdf_data.controller");
+const get_bop_query_controler_1 = require("./infraestructure/controller/get_bop_query.controler");
+const get_bop_search_service_1 = require("./application/get_bop_search.service");
+const get_bops_search_query_1 = require("./domain/query/get_bops_search.query");
 const Services = [
     get_depor_bops_service_1.GetDeporBopsService,
     get_bop_by_content_service_1.GetBopsQueryService,
-    get_pdf_service_1.GetPdfService
+    get_pdf_service_1.GetPdfService,
+    get_bop_search_service_1.GetBopsSearchService
 ];
 const Query = [
     get_depor_bops_query_1.GetDeporBops,
     get_bop_by_content_querty_1.GetDeporBopsQuery,
     get_bop_by_content_controller_1.GetBopByContentController,
     get_pdf_query_1.GetPdfQuery,
+    get_bops_search_query_1.GetBopsSearchQuery
 ];
 const Controller = [
     get_depor_bops_controller_1.GetDeporBopsController,
     get_bop_by_content_controller_1.GetBopByContentController,
     get_bop_pdf_controller_1.GetBopPdfController,
-    get_pdf_data_controller_1.GetBopPdfDataController
+    get_pdf_data_controller_1.GetBopPdfDataController,
+    get_bop_query_controler_1.GetBopsByQueryController
 ];
 let BopsModule = class BopsModule {
 };
