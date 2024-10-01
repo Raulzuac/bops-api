@@ -13,9 +13,13 @@ export class GetDeporBopsQuery{
     ){}
     
     async extecute(content:string){
-        const pages = await this.pagesRepository.createQueryBuilder()
-        .where("content LIKE :content",{content: `%${content}%`})
+        const pages = await this.pagesRepository.createQueryBuilder("page")
+        .select("page.bopId")
+        .where("page.content LIKE :content",{content: `%${content}%`})
         .getMany();
+         
+        console.log(pages);
+        
         
         const bops_ids:string[] = pages.map(page => page.bopId);
         
