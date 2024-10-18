@@ -25,13 +25,13 @@ export class GetBopsSearchQuery {
         const query = this.bopRepository.createQueryBuilder("bop")
             .select(["bop.id","bop.date","bop.place"])  // Selecciona solo el campo 'id'
             .where(`bop.date >= :startDate AND bop.date <= :endDate`, { startDate, endDate });
-        console.log(query.getSql());
+        // console.log(query.getSql());
 
         const bops = await query.getMany();
 
 
         const bops_ids = bops.map(bop => bop.id);
-        console.log(bops_ids);
+        // console.log(bops_ids);
 
 
 
@@ -42,7 +42,7 @@ export class GetBopsSearchQuery {
             }
             return criteria;
         }).join('');
-        console.log(re);
+        // console.log(re);
 
 
         // Buscamos las páginas que contengan los criterios de búsqueda y que pertenezcan a los bops encontrados
@@ -50,12 +50,12 @@ export class GetBopsSearchQuery {
         const queryPages = this.pagesRepository.createQueryBuilder()
             .where(`bopId IN (${stringIds})`)
             .andWhere(`content REGEXP '${re}'`);
-        console.log(queryPages.getSql());
+        // console.log(queryPages.getSql());
         const pages = await queryPages.getMany();
 
 
-        console.log(pages);
-        console.log(bops);
+        // console.log(pages);
+        // console.log(bops);
 
         if (pages.length === 0) {
             return [];
@@ -64,18 +64,18 @@ export class GetBopsSearchQuery {
         return pages.map(page => {
 
             const find_bop: Bop = bops.find((bop) => {
-                if (bop.id === page.bopId) console.log('Encontrado');
+                // if (bop.id === page.bopId) console.log('Encontrado');
                 if (bop.id === page.bopId) return bop;
 
             });
-            console.log(find_bop);
+            // console.log(find_bop);
 
             const coincidence = page.content.match(new RegExp(re, 'i'));
             const pre_coincidence = page.content.slice(0, coincidence.index);
             const post_coincidence = page.content.slice(coincidence.index + coincidence[0].length);
-            console.log(coincidence[0]);
-            console.log(pre_coincidence);
-            console.log(post_coincidence);
+            // console.log(coincidence[0]);
+            // console.log(pre_coincidence);
+            // console.log(post_coincidence);
 
             const bop = {
                 id: find_bop.id,

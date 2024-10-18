@@ -17,6 +17,8 @@ import { GetBopPdfDataController } from './infraestructure/controller/get_pdf_da
 import { GetBopsByQueryController } from './infraestructure/controller/get_bop_query.controler';
 import { GetBopsSearchService } from './application/get_bop_search.service';
 import { GetBopsSearchQuery } from './domain/query/get_bops_search.query';
+import { SaveSearchQuery } from './domain/query/save_search.query';
+import { Busqueda } from './infraestructure/database/busqueda.entity';
 
 const Services = [
     GetDeporBopsService,
@@ -30,7 +32,8 @@ const Query = [
     GetDeporBopsQuery,
     GetBopByContentController,
     GetPdfQuery,
-    GetBopsSearchQuery
+    GetBopsSearchQuery,
+    SaveSearchQuery
 ]
 
 const Controller = [
@@ -45,7 +48,8 @@ const Controller = [
     imports: [
         TypeOrmModule.forFeature([
             Bop,
-            Pages
+            Pages,
+            Busqueda
         ])],
     controllers: [
         ...Controller

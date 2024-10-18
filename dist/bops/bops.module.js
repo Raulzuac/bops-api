@@ -24,6 +24,8 @@ const get_pdf_data_controller_1 = require("./infraestructure/controller/get_pdf_
 const get_bop_query_controler_1 = require("./infraestructure/controller/get_bop_query.controler");
 const get_bop_search_service_1 = require("./application/get_bop_search.service");
 const get_bops_search_query_1 = require("./domain/query/get_bops_search.query");
+const save_search_query_1 = require("./domain/query/save_search.query");
+const busqueda_entity_1 = require("./infraestructure/database/busqueda.entity");
 const Services = [
     get_depor_bops_service_1.GetDeporBopsService,
     get_bop_by_content_service_1.GetBopsQueryService,
@@ -35,7 +37,8 @@ const Query = [
     get_bop_by_content_querty_1.GetDeporBopsQuery,
     get_bop_by_content_controller_1.GetBopByContentController,
     get_pdf_query_1.GetPdfQuery,
-    get_bops_search_query_1.GetBopsSearchQuery
+    get_bops_search_query_1.GetBopsSearchQuery,
+    save_search_query_1.SaveSearchQuery
 ];
 const Controller = [
     get_depor_bops_controller_1.GetDeporBopsController,
@@ -52,7 +55,8 @@ exports.BopsModule = BopsModule = __decorate([
         imports: [
             typeorm_1.TypeOrmModule.forFeature([
                 bop_entity_1.Bop,
-                pages_entify_1.Pages
+                pages_entify_1.Pages,
+                busqueda_entity_1.Busqueda
             ])
         ],
         controllers: [

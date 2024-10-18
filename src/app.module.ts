@@ -5,10 +5,12 @@ import { BopsModule } from './bops/bops.module';
 import { Bop } from './bops/infraestructure/database/bop.entity';
 import { Pages } from './bops/infraestructure/database/pages.entify';
 import { ConfigModule } from '@nestjs/config';
+import { Busqueda } from './bops/infraestructure/database/busqueda.entity';
 
 const Entities = [
   Bop,
-  Pages
+  Pages,
+  Busqueda
 ]
 
 @Module({

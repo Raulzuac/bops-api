@@ -13,9 +13,11 @@ const bops_module_1 = require("./bops/bops.module");
 const bop_entity_1 = require("./bops/infraestructure/database/bop.entity");
 const pages_entify_1 = require("./bops/infraestructure/database/pages.entify");
 const config_1 = require("@nestjs/config");
+const busqueda_entity_1 = require("./bops/infraestructure/database/busqueda.entity");
 const Entities = [
     bop_entity_1.Bop,
-    pages_entify_1.Pages
+    pages_entify_1.Pages,
+    busqueda_entity_1.Busqueda
 ];
 let AppModule = class AppModule {
 };

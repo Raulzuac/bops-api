@@ -1,8 +1,10 @@
 import { SearchBopDtoInput } from "../infraestructure/dto/search_bop_dto_input";
 import { GetBopsSearchQuery } from "../domain/query/get_bops_search.query";
+import { SaveSearchQuery } from "../domain/query/save_search.query";
 export declare class GetBopsSearchService {
     private readonly getBopQuery;
-    constructor(getBopQuery: GetBopsSearchQuery);
+    private readonly saveSearchQuery;
+    constructor(getBopQuery: GetBopsSearchQuery, saveSearchQuery: SaveSearchQuery);
     execute(query: SearchBopDtoInput): Promise<{
         bop: {
             id: string;
