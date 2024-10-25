@@ -9,9 +9,11 @@ export class GetBopsByQueryController{
     ){}
 
     @Post('search')
-    getBopsByQuery(@Body() body: SearchBopDtoInput){
-
-        return this.getBopSearchService.execute(body);
+    async getBopsByQuery(@Body() body: SearchBopDtoInput){
+        
+        const response = await this.getBopSearchService.execute(body);
     
+        return response; 
+
     }
 }

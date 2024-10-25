@@ -19,8 +19,9 @@ let GetBopsByQueryController = class GetBopsByQueryController {
     constructor(getBopSearchService) {
         this.getBopSearchService = getBopSearchService;
     }
-    getBopsByQuery(body) {
-        return this.getBopSearchService.execute(body);
+    async getBopsByQuery(body) {
+        const response = await this.getBopSearchService.execute(body);
+        return response;
     }
 };
 exports.GetBopsByQueryController = GetBopsByQueryController;
@@ -29,7 +30,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], GetBopsByQueryController.prototype, "getBopsByQuery", null);
 exports.GetBopsByQueryController = GetBopsByQueryController = __decorate([
     (0, common_1.Controller)(),
