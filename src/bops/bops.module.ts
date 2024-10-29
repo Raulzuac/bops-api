@@ -19,12 +19,20 @@ import { GetBopsSearchService } from './application/get_bop_search.service';
 import { GetBopsSearchQuery } from './domain/query/get_bops_search.query';
 import { SaveSearchQuery } from './domain/query/save_search.query';
 import { Busqueda } from './infraestructure/database/busqueda.entity';
+import { GetAllPlacesController } from './infraestructure/controller/get_all_places.controller';
+import { GetAllPlacesService } from './application/get_all_places.service';
+import { GetAllPlacesQuery } from './domain/query/get_all_places.query';
+import { CheckBopsFromPlaceController } from './infraestructure/controller/check_bops_from_place.controller';
+import { CheckBopService } from './application/check_bop.service';
+import { CheckBopQuery } from './domain/query/check_bop.query';
 
 const Services = [
     GetDeporBopsService,
     GetBopsQueryService,
     GetPdfService,
-    GetBopsSearchService
+    GetBopsSearchService,
+    GetAllPlacesService,
+    CheckBopService
 ]
 
 const Query = [
@@ -33,7 +41,9 @@ const Query = [
     GetBopByContentController,
     GetPdfQuery,
     GetBopsSearchQuery,
-    SaveSearchQuery
+    SaveSearchQuery,
+    GetAllPlacesQuery,
+    CheckBopQuery
 ]
 
 const Controller = [
@@ -41,7 +51,9 @@ const Controller = [
     GetBopByContentController,
     GetBopPdfController,
     GetBopPdfDataController,
-    GetBopsByQueryController
+    GetBopsByQueryController,
+    GetAllPlacesController,
+    CheckBopsFromPlaceController
 ]
 
 @Module({

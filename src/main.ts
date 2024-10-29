@@ -8,9 +8,6 @@ async function bootstrap() {
     key: fs.readFileSync(process.env.SSL_PRIVATE_KEY,'utf8'),
     cert: fs.readFileSync(process.env.SSL_CERTIFICATE,'utf8'),
   }
-  console.log(httpsOptions.cert);
-  console.log(httpsOptions.key);
-  console.log(`Puerto ${process.env.PORT}`);
   const app = await NestFactory.create(AppModule, {
     httpsOptions,
   });
